@@ -3,9 +3,14 @@ import reactLogo from './assets/react.svg';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);
 
-  return <div>Ecommerce</div>;
+    return (
+        <div>
+            <h1>sâsasasa</h1>
+            Ecommerce
+        </div>
+    );
 }
 
 export default App;
