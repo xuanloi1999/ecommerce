@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src", // Set the base directory to 'src' (this is common practice)
+        "paths": {
+            "@components/*": ["src/components/*"]
+        }
+    },
+    "include": ["src"]
+}

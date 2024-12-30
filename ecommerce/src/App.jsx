@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
-import './App.css';
-import Hello from '@components/Hello/Hello';
+import '@styles/main.scss';
+import MainLayout from './components/Layout/Layout';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 function App() {
-    const [count, setCount] = useState(0);
-
     return (
-        <div>
-            <Hello />
-            Ecommerce
-        </div>
+        <>
+            <MainLayout>
+                <Header />
+            </MainLayout>
+        </>
     );
 }
 
