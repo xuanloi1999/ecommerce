@@ -1,3 +1,4 @@
+import Button from '@components/Button/Button';
 import styles from './styles.module.scss';
 
 function Banner() {
@@ -11,7 +12,7 @@ function Banner() {
                     Make yours celebrations even more special this years with
                     beautiful.
                 </div>
-                <button>Go to shop</button>
+                <Button content='Go to shop' />
             </div>
         </div>
     );

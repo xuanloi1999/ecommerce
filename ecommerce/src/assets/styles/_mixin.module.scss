@@ -11,7 +11,7 @@
 
 @mixin btn($w, $h, $color, $radius) {
     outline: none;
-    border: 1px solid #e1e1e1;
+    border: none;
     width: $w;
     height: $h;
     background-color: $color;
