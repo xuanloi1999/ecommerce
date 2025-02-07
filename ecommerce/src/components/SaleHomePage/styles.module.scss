@@ -1,0 +1,33 @@
+@import '@styles/variable.module.scss';
+@import '@styles/mixin.module.scss';
+
+.container {
+    @include flex_box_custom(space-between, center, 10px);
+    margin-top: 40px;
+
+    .title,
+    .btn,
+    .description {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 35px;
+        font-weight: 300;
+        color: $four_color;
+    }
+
+    .description {
+        font-size: 16px;
+        color: $thr_color;
+        font-weight: 300;
+        width: 320px;
+        line-height: 25px;
+    }
+
+    .boxImg {
+        @include flex_box_custom(center, center, 10px);
+
+        width: 100%;
+    }
+}

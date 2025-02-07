@@ -13,8 +13,6 @@ function ProductItem({ src, prevSrc, name, productPrice }) {
         price,
     } = styles;
 
-    console.log('productPrice', productPrice);
-
     return (
         <div>
             <div className={boxImg}>
