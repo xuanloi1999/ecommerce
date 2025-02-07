@@ -3,10 +3,24 @@
 
 .container {
     @include flex_box_custom(center, center);
-    position: absolute;
-    top: 0;
     left: 0;
     right: 0;
+}
+
+.topHeader {
+    position: absolute;
+    top: 0;
+}
+
+.fixedHeader {
+    position: fixed;
+    top: -83px;
+    z-index: 1000;
+    background-color: #ffffffe6;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+    transform: translateY(83px);
+    transition: transform 500ms;
 }
 .containerHeader {
     display: flex;

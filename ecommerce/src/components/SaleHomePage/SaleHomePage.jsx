@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 import Button from '@components/Button/Button';
 import { useEffect, useRef, useState } from 'react';
 import { use } from 'react';
-import useTranslateXImage from '@components/SaleHomePage/translateXImage';
+import useTranslateXImage from '@/hooks/useTranslateXImage';
 
 function SaleHomePage() {
     const { container, content, title, btn, description, boxImg } = styles;

@@ -4,6 +4,9 @@ import styles from './styles.module.scss';
 import { dataMenu } from '@components/Header/BoxIcon/constaints';
 import Menu from '@components/Header/Menu/Menu';
 import Logo from '@images/Logo-retina.png';
+import useScrollHandling from '@/hooks/useScrollHandling';
+import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 function Header() {
     const {
         containerBoxIcon,
@@ -11,9 +14,18 @@ function Header() {
         containerHeader,
         containerBox,
         container,
+        fixedHeader,
+        topHeader,
     } = styles;
+
+    const [fixed, setFixed] = useState(false);
+    const { scrollPosition } = useScrollHandling();
+
+    useEffect(() => {
+        setFixed(scrollPosition > 80);
+    }, [scrollPosition]);
     return (
-        <div className={container}>
+        <div className={classNames(container, { [fixedHeader]: fixed })}>
             <div className={containerHeader}>
                 <div className={containerBox}>
                     <div className={containerBoxIcon}>
