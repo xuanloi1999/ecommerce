@@ -1,8 +1,18 @@
+import classNames from 'classnames';
 import styles from './styles.module.scss';
 
-function Button({ content }) {
-    const { btn } = styles;
-    return <button className={btn}>{content}</button>;
+function Button({ content, isPrimary = true }) {
+    const { btn, primaryBtn, secondaryBtn } = styles;
+    return (
+        <button
+            className={classNames(btn, {
+                [primaryBtn]: isPrimary,
+                [secondaryBtn]: !isPrimary,
+            })}
+        >
+            {content}
+        </button>
+    );
 }
 
 export default Button;

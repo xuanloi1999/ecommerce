@@ -3,15 +3,31 @@
 
 .btn {
     @include btn(173px, 42px, $primary_color, 2px);
-    color: $white_color;
     font-size: 14px;
     font-weight: 300;
     cursor: pointer;
-    transition: color 500ms, background-color 500ms;
-
     &:hover {
-        @include btn(173px, 42px, transparent, 2px);
+        transition: color 500ms, background-color 500ms;
+    }
+}
+
+.primaryBtn {
+    background-color: $primary_color;
+    color: white;
+    &:hover {
+        background-color: transparent;
         color: $primary_color;
         border: 1px solid $primary_color;
+    }
+}
+
+.secondaryBtn {
+    background-color: $white_color;
+    color: $primary_color;
+    border: 1px solid $primary_color;
+
+    &:hover {
+        background-color: $primary_color;
+        color: $white_color;
     }
 }
