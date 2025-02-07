@@ -8,7 +8,6 @@ function InfoCard({ title, description, src }) {
         titleContent,
         descriptionContent,
     } = styles;
-    console.log(src);
 
     return (
         <div className={containerCart}>
