@@ -1,9 +1,15 @@
 import styles from '../styles.module.scss';
 
-function Menu({ content, href }) {
+function Menu({ content, href, setIsSidebarOpen }) {
     const { menu } = styles;
 
-    return <div className={menu}>{content}</div>;
+    console.log('content:', content);
+
+    return (
+        <div className={menu} onClick={() => setIsSidebarOpen(true)}>
+            {content}
+        </div>
+    );
 }
 
 export default Menu;

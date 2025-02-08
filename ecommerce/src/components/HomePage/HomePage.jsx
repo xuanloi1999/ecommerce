@@ -23,17 +23,15 @@ function HomePage() {
     console.log(products);
 
     return (
-        <div>
-            <div className={container}>
-                <Header />
-                <Banner />
-                <Info />
-                <AdvanceHeadling />
-                <HeadlingListProduct data={products.slice(0, 2)} />
-                <PopularProduct data={products.slice(2)} />
-                <SaleHomePage />
-                <Footer />
-            </div>
+        <div className={container}>
+            <Header />
+            <Banner />
+            <Info />
+            <AdvanceHeadling />
+            <HeadlingListProduct data={products.slice(0, 2)} />
+            <PopularProduct data={products.slice(2)} />
+            <SaleHomePage />
+            <Footer />
         </div>
     );
 }

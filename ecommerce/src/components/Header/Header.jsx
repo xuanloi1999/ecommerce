@@ -5,8 +5,9 @@ import { dataMenu } from '@components/Header/BoxIcon/constaints';
 import Menu from '@components/Header/Menu/Menu';
 import Logo from '@images/Logo-retina.png';
 import useScrollHandling from '@/hooks/useScrollHandling';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { SidebarContext } from '@/contexts/SidebarProvider';
 function Header() {
     const {
         containerBoxIcon,
@@ -20,6 +21,9 @@ function Header() {
 
     const [fixed, setFixed] = useState(false);
     const { scrollPosition } = useScrollHandling();
+    const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
+
+    console.log('isSidebarOpen:', isSidebarOpen);
 
     useEffect(() => {
         setFixed(scrollPosition > 80);
@@ -49,7 +53,10 @@ function Header() {
                 <div className={containerBox}>
                     <div className={containerMenu}>
                         {dataMenu.slice(3).map((menu) => (
-                            <Menu content={menu.content} />
+                            <Menu
+                                content={menu.content}
+                                setIsSidebarOpen={setIsSidebarOpen}
+                            />
                         ))}
                     </div>
                     <div className={containerBoxIcon}>

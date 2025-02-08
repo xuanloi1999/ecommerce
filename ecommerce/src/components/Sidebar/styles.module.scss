@@ -1,0 +1,53 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    position: relative;
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #0000004d;
+        z-index: 1000;
+        transition: all 0.3s;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 350px;
+        background-color: #fff;
+        z-index: 10001;
+        box-shadow: 0 0 10px 0 #0000004d;
+        transform: translateX(350px);
+        transition: transform 0.3s;
+    }
+
+    .slideSidebar {
+        transform: translateX(0);
+    }
+
+    .boxIcon {
+        position: absolute;
+        top: 25px;
+        left: -48px;
+        width: 38px;
+        height: 38px;
+        background-color: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 10px 0 #0000004d;
+        @include flex_box_custom(center, center, 20px);
+        cursor: pointer;
+        z-index: 10002;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #ccc;
+        }
+    }
+}
