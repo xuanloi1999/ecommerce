@@ -4,4 +4,8 @@ const register = async (body) => {
     return await axiosClient.post('/register', body);
 };
 
-export { register };
+const signIn = async (body) => {
+    return await axiosClient.post('/login', body);
+};
+
+export { register, signIn };

@@ -5,7 +5,8 @@ import * as Yup from 'yup';
 import Button from '@components/Button/Button';
 import { useContext, useState } from 'react';
 import { ToastContext } from '@/contexts/ToastProvider';
-import { register } from '@/apis/authService';
+import { register, signIn } from '@/apis/authService';
+import Cookies from 'js-cookie';
 
 function Login() {
     const { container, title, remember, checkbox, label, submit, forgot } =
@@ -33,13 +34,29 @@ function Login() {
         onSubmit: async (values) => {
             if (isLoading) return;
 
+            const { email: username, password } = values;
+
             if (isRegister) {
                 setIsLoading(true);
 
-                const { email: username, password } = values;
                 await register({ username, password })
                     .then((res) => {
                         toast.success(res.data.message);
+                        setIsLoading(false);
+                    })
+                    .catch((err) => {
+                        toast.error(err.response.data.message);
+                        setIsLoading(false);
+                    });
+            }
+
+            if (!isRegister) {
+                await signIn({ username, password })
+                    .then((res) => {
+                        const { id, token, refreshToken, message } = res.data;
+                        toast.success(message);
+                        Cookies.set('token', token);
+                        Cookies.set('refreshToken', refreshToken);
                         setIsLoading(false);
                     })
                     .catch((err) => {
