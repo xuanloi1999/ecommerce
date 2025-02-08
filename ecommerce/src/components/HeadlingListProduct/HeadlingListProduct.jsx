@@ -5,7 +5,6 @@ import ProductItem from '@components/ProductItem/ProductItem';
 
 function HeadlingListProduct({ data }) {
     const { container, containerItem } = styles;
-    console.log(data[0]);
 
     return (
         <MainLayout>

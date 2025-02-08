@@ -5,31 +5,36 @@ import ytbIcon from '@icons/svgs/ytbIcon.svg';
 import reloadIcon from '@icons/svgs/reloadIcon.svg';
 import heartIcon from '@icons/svgs/heartIcon.svg';
 import cartIcon from '@icons/svgs/cartIcon.svg';
-
-function BoxIcon({ type, href }) {
+import { TfiReload } from 'react-icons/tfi';
+import { FaFacebook } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
+import { FiYoutube } from 'react-icons/fi';
+import { FaRegHeart } from 'react-icons/fa';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+function BoxIcon({ type, href, setType }) {
     const { boxIcon } = styles;
 
     const handleRenderIcon = (type) => {
         switch (type) {
             case 'fb':
-                return fbIcon;
+                return <FaFacebook />;
             case 'ins':
-                return insIcon;
+                return <FaInstagram />;
             case 'ytb':
-                return ytbIcon;
-            case 'reload':
-                return reloadIcon;
-            case 'heart':
-                return heartIcon;
+                return <FiYoutube />;
+            case 'compare':
+                return <TfiReload />;
+            case 'wishlist':
+                return <FaRegHeart />;
             case 'cart':
-                return cartIcon;
+                return <AiOutlineShoppingCart />;
             default:
                 break;
         }
     };
     return (
-        <div className={boxIcon}>
-            <img src={handleRenderIcon(type)} alt='' />
+        <div className={boxIcon} onClick={() => setType(type)}>
+            {handleRenderIcon(type)}
         </div>
     );
 }

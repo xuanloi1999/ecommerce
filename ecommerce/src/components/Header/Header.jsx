@@ -21,9 +21,15 @@ function Header() {
 
     const [fixed, setFixed] = useState(false);
     const { scrollPosition } = useScrollHandling();
-    const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
+    const { isSidebarOpen, setIsSidebarOpen, type, setType } =
+        useContext(SidebarContext);
 
-    console.log('isSidebarOpen:', isSidebarOpen);
+    const handleOpenSidebar = (type) => {
+        setIsSidebarOpen(true);
+        setType(type);
+    };
+
+    console.log(type);
 
     useEffect(() => {
         setFixed(scrollPosition > 80);
@@ -61,7 +67,11 @@ function Header() {
                     </div>
                     <div className={containerBoxIcon}>
                         {dataBoxIcon.slice(3).map((icon) => (
-                            <BoxIcon type={icon.type} href={icon.href} />
+                            <BoxIcon
+                                type={icon.type}
+                                href={icon.href}
+                                setType={handleOpenSidebar}
+                            />
                         ))}
                     </div>
                 </div>

@@ -2,8 +2,8 @@ const dataBoxIcon = [
     { type: 'fb', href: '#' },
     { type: 'ins', href: '#' },
     { type: 'ytb', href: '#' },
-    { type: 'reload', href: '#' },
-    { type: 'heart', href: '#' },
+    { type: 'compare', href: '#' },
+    { type: 'wishlist', href: '#' },
     { type: 'cart', href: '#' },
 ];
 

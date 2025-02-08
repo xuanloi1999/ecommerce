@@ -1,0 +1,11 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    @include flex_box_custom(center, center);
+    flex-direction: column;
+
+    .title {
+        text-transform: uppercase;
+    }
+}

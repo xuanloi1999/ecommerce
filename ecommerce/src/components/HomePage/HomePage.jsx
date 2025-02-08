@@ -20,8 +20,6 @@ function HomePage() {
         });
     }, []);
 
-    console.log(products);
-
     return (
         <div className={container}>
             <Header />

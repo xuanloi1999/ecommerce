@@ -8,8 +8,6 @@ import { SidebarProvider } from '@/contexts/SidebarProvider';
 import Sidebar from '@components/Sidebar/Sidebar';
 
 function App() {
-    console.log('routers:', routers);
-
     return (
         <SidebarProvider>
             <Sidebar />
