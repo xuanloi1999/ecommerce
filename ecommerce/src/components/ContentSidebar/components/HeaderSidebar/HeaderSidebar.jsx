@@ -1,13 +1,12 @@
-import { AiOutlineShoppingCart } from 'react-icons/ai';
 import styles from './styles.module.scss';
 
-function HeaderSidebar() {
-    const { container, title } = styles;
+function HeaderSidebar({ icon, title }) {
+    const { container, titleBox } = styles;
 
     return (
         <div className={container}>
-            <AiOutlineShoppingCart />
-            <div className={title}>Compare</div>
+            {icon}
+            <div className={titleBox}>{title}</div>
         </div>
     );
 }

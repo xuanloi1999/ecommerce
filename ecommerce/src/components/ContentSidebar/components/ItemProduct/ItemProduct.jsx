@@ -30,7 +30,9 @@ function ItemProduct() {
 
             <div className={boxContent}>
                 <div className={title}>title of product</div>
-                <div className={price}>$119.99</div>
+                <div className={size}>Size: M</div>
+                <div className={price}> 1 x $119.99</div>
+                <div className={price}>SKU: 12349</div>
             </div>
         </div>
     );

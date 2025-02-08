@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import { IoMdClose } from 'react-icons/io';
 import Login from '@components/ContentSidebar/Login/Login';
 import Compare from '@components/ContentSidebar/Compare/Compare';
+import Wishlist from '@components/ContentSidebar/Wishlist/Wishlist';
+import Cart from '@components/ContentSidebar/Cart/Cart';
 
 function Sidebar() {
     const { container, overlay, sidebar, slideSidebar, boxIcon } = styles;
@@ -19,12 +21,12 @@ function Sidebar() {
         switch (type) {
             case 'login':
                 return <Login />;
-            case 'register':
-                return null;
+            case 'cart':
+                return <Cart />;
             case 'compare':
                 return <Compare />;
             case 'wishlist':
-                return null;
+                return <Wishlist />;
             default:
                 return null;
         }

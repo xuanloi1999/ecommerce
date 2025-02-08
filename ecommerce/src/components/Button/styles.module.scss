@@ -2,7 +2,7 @@
 @import '@styles/variable.module.scss';
 
 .btn {
-    @include btn(173px, 42px, $primary_color, 2px);
+    @include btn(100%, 42px, $primary_color, 2px);
     font-size: 14px;
     font-weight: 300;
     cursor: pointer;
