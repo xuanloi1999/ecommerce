@@ -3,13 +3,14 @@ import styles from './styles.module.scss';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Button from '@components/Button/Button';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ToastContext } from '@/contexts/ToastProvider';
 
 function Login() {
     const { container, title, remember, checkbox, label, submit, forgot } =
         styles;
     const [isRegister, setIsRegister] = useState(false);
-
+    const { toast } = useContext(ToastContext);
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -74,6 +75,7 @@ function Login() {
                 <Button
                     content={isRegister ? 'REGISTER' : 'LOGIN'}
                     type='submit'
+                    onClick={() => toast.success('Login successfully')}
                 />
             </form>
 
