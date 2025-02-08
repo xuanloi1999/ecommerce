@@ -1,0 +1,55 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    padding: 30px 20px 0 20px;
+
+    .title {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .remember {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .checkbox {
+            margin-right: 10px;
+        }
+
+        .label {
+            font-size: 14px;
+        }
+    }
+
+    .submit {
+        width: 100%;
+        background-color: $primary_color;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: white;
+            color: $primary_color;
+        }
+    }
+
+    .forgot {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: $four_color;
+        cursor: pointer;
+        transition: color 0.3s;
+
+        &:hover {
+            color: $primary_color;
+        }
+    }
+}

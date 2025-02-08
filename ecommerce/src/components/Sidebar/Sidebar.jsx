@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import { SidebarContext } from '@/contexts/SidebarProvider';
 import classNames from 'classnames';
 import { IoMdClose } from 'react-icons/io';
+import Login from '@components/ContentSidebar/Login/Login';
 
 function Sidebar() {
     const { container, overlay, sidebar, slideSidebar, boxIcon } = styles;
@@ -32,7 +33,7 @@ function Sidebar() {
                         <IoMdClose />
                     </div>
                 )}
-                SideBar
+                <Login />
             </div>
         </div>
     );

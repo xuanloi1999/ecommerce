@@ -1,0 +1,35 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    margin-bottom: 10px;
+    .labelInput {
+        font-size: 14px;
+        color: $four_color;
+        margin-bottom: 5px;
+    }
+
+    .boxInput {
+        width: 100%;
+        position: relative;
+        input {
+            width: 100%;
+
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+            outline: none;
+            transition: all 0.3s;
+            padding: 10px 0 10px 10px;
+        }
+
+        .eyeIcon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    }
+}
