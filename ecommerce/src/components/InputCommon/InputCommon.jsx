@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import styles from './styles.module.scss';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import classNames from 'classnames';
 
-function InputCommon({ label, type, isRequired = false }) {
-    const { container, labelInput, boxInput, eyeIcon } = styles;
+function InputCommon({ label, type, isRequired = false, ...props }) {
+    const { container, labelInput, boxInput, eyeIcon, error, isErrInput } =
+        styles;
     const [showPassword, setShowPassword] = useState(false);
-    const [inputValue, setInputValue] = useState('');
 
+    const { formik, id } = props;
     const passwordOrAnotherType =
         type === 'password' && showPassword ? 'text' : type;
 
@@ -18,8 +20,14 @@ function InputCommon({ label, type, isRequired = false }) {
             <div className={boxInput}>
                 <input
                     type={passwordOrAnotherType}
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
+                    {...props}
+                    id={id}
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    value={formik.values[id]}
+                    className={classNames({
+                        [isErrInput]: formik.errors[id] && formik.touched[id],
+                    })}
                 />
 
                 {type === 'password' && (
@@ -34,6 +42,9 @@ function InputCommon({ label, type, isRequired = false }) {
                     </div>
                 )}
             </div>
+            {formik.errors[id] && formik.touched[id] && (
+                <div className={error}>{formik.errors[id]}</div>
+            )}
         </div>
     );
 }

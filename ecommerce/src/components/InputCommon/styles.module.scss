@@ -24,6 +24,10 @@
             padding: 10px 0 10px 10px;
         }
 
+        input.isErrInput {
+            border: 1px solid red;
+        }
+
         .eyeIcon {
             position: absolute;
             top: 50%;
@@ -31,5 +35,11 @@
             transform: translateY(-50%);
             cursor: pointer;
         }
+    }
+
+    .error {
+        font-size: 14px;
+        color: red;
+        margin-top: 5px;
     }
 }
