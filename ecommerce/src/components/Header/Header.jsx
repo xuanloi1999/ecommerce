@@ -8,6 +8,7 @@ import useScrollHandling from '@/hooks/useScrollHandling';
 import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { SidebarContext } from '@/contexts/SidebarProvider';
+
 function Header() {
     const {
         containerBoxIcon,
