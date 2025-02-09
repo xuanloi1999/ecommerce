@@ -1,34 +1,38 @@
+const { isSidebarOpen, setIsSidebarOpen, type } = useContext(SidebarContext);
 import { useContext } from 'react';
 import styles from './styles.module.scss';
-import { SidebarContext } from '@/contexts/SidebarProvider';
+import { SideBarContext } from '@/contexts/SideBarProvider';
 import classNames from 'classnames';
-import { IoMdClose } from 'react-icons/io';
-import Login from '@components/ContentSidebar/Login/Login';
-import Compare from '@components/ContentSidebar/Compare/Compare';
-import Wishlist from '@components/ContentSidebar/Wishlist/Wishlist';
-import Cart from '@components/ContentSidebar/Cart/Cart';
+import { TfiClose } from 'react-icons/tfi';
+import Login from '@components/ContentSideBar/Login/Login';
+import Compare from '@components/ContentSideBar/Compare/Compare';
+import WishList from '@components/ContentSideBar/WishList/WishList';
+import Cart from '@components/ContentSideBar/Cart/Cart';
+import DetailProduct from '@components/ContentSideBar/DetailProduct/DetailProduct';
 
-function Sidebar() {
-    const { container, overlay, sidebar, slideSidebar, boxIcon } = styles;
-    const { isSidebarOpen, setIsSidebarOpen, type } =
-        useContext(SidebarContext);
+function SideBar() {
+    const { container, overlay, sideBar, slideSideBar, boxIcon } = styles;
+    const { isOpen, setIsOpen, type } = useContext(SideBarContext);
 
-    const handleToggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
     };
 
     const handleRenderContent = () => {
         switch (type) {
             case 'login':
                 return <Login />;
-            case 'cart':
-                return <Cart />;
             case 'compare':
                 return <Compare />;
             case 'wishlist':
-                return <Wishlist />;
+                return <WishList />;
+            case 'cart':
+                return <Cart />;
+            case 'detail':
+                return <DetailProduct />;
+
             default:
-                return null;
+                return <Login />;
         }
     };
 
@@ -36,24 +40,25 @@ function Sidebar() {
         <div className={container}>
             <div
                 className={classNames({
-                    [overlay]: isSidebarOpen,
+                    [overlay]: isOpen,
                 })}
-                onClick={handleToggleSidebar}
-            ></div>
+                onClick={handleToggle}
+            />
             <div
-                className={classNames(sidebar, {
-                    [slideSidebar]: isSidebarOpen,
+                className={classNames(sideBar, {
+                    [slideSideBar]: isOpen,
                 })}
             >
-                {isSidebarOpen && (
-                    <div className={boxIcon} onClick={handleToggleSidebar}>
-                        <IoMdClose />
+                {isOpen && (
+                    <div className={boxIcon} onClick={handleToggle}>
+                        <TfiClose />
                     </div>
                 )}
+
                 {handleRenderContent()}
             </div>
         </div>
     );
 }
 
-export default Sidebar;
+export default SideBar;

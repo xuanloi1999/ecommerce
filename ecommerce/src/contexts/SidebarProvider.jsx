@@ -7,15 +7,21 @@ export const SidebarProvider = ({ children }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [type, setType] = useState('');
     const [productsCart, setProductsCart] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const userId = Cookies.get('userId');
 
     const handleGetProductsCart = (userId, type) => {
         if (userId && type === 'cart') {
+            setIsLoading(true);
             getCart(userId)
                 .then((res) => {
                     setProductsCart(res.data.data);
+                    setIsLoading(false);
                 })
                 .catch((err) => {
                     setProductsCart([]);
+                    setIsLoading(false);
                 });
         }
     };
@@ -27,6 +33,9 @@ export const SidebarProvider = ({ children }) => {
         setType,
         handleGetProductsCart,
         productsCart,
+        isLoading,
+        setIsLoading,
+        userId,
     };
 
     useEffect(() => {

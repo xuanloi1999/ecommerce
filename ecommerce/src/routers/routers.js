@@ -15,7 +15,7 @@ const routers = [
     },
     {
         path: '/cart',
-        component: lazy(() => import('@pages/OurShop/OurShop')),
+        component: lazy(() => import('@pages/Cart/Cart')),
     },
 ];
 

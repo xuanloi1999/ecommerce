@@ -22,7 +22,9 @@ function Cart() {
         boxBtnEmpty,
         containerListItem,
     } = styles;
-    const { productsCart } = useContext(SidebarContext);
+    const { productsCart, isLoading } = useContext(SidebarContext);
+
+    const navigate = useNavigate();
 
     const handleNavigateToShop = () => {
         navigate('/shop');
