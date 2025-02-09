@@ -40,10 +40,9 @@ function Login() {
             if (isLoading) return;
 
             const { email: username, password } = values;
+            setIsLoading(true);
 
             if (isRegister) {
-                setIsLoading(true);
-
                 await register({ username, password })
                     .then((res) => {
                         toast.success(res.data.message);
@@ -56,7 +55,6 @@ function Login() {
             }
 
             if (!isRegister) {
-                setIsLoading(true);
                 await signIn({ username, password })
                     .then((res) => {
                         const { id, token, refreshToken, message } = res.data;

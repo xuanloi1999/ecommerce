@@ -11,8 +11,6 @@ export const StoreProvider = ({ children }) => {
         if (userId) {
             getInfo(userId)
                 .then((res) => {
-                    console.log(res);
-
                     setUserInfo(res.data.data);
                 })
                 .then((err) => {
@@ -29,8 +27,6 @@ export const StoreProvider = ({ children }) => {
         setUserInfo(null);
         window.location.reload();
     };
-
-    console.log('Render StoreProvider', userInfo);
 
     return (
         <StoreContext.Provider value={{ userInfo, handleLogout, setUserId }}>

@@ -12,8 +12,6 @@ function Menu({ content, href }) {
     const [isShowSubMenu, setIsShowSubMenu] = useState(false);
     const navigate = useNavigate();
 
-    console.log(content);
-
     const handleClickShowLogin = () => {
         if (content === 'Sign in' && !userInfo) {
             setIsSidebarOpen(true);

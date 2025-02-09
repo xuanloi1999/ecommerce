@@ -30,8 +30,6 @@ function Header() {
         setType(type);
     };
 
-    console.log(type);
-
     useEffect(() => {
         setFixed(scrollPosition > 80);
     }, [scrollPosition]);

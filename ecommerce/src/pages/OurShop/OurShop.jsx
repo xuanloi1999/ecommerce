@@ -3,6 +3,10 @@ import MainLayout from '@components/Layout/Layout';
 import styles from './styles.module.scss';
 import { useNavigate } from 'react-router-dom';
 import Banner from '@pages/OurShop/components/Banner';
+import Filter from '@pages/OurShop/components/Filter';
+import { OurShopProvider } from '@/contexts/OurShopProvider';
+import ListProducts from '@pages/OurShop/components/ListProducts';
+import Footer from '@components/Footer/Footer';
 
 function OurShop() {
     const { container, functionBox, specialText, btnBack } = styles;
@@ -12,7 +16,7 @@ function OurShop() {
         navigate(-1);
     };
     return (
-        <div>
+        <OurShopProvider>
             <Header />
             <MainLayout>
                 <div className={container}>
@@ -29,8 +33,16 @@ function OurShop() {
                 </div>
 
                 <Banner />
+
+                <div>
+                    <Filter />
+
+                    <ListProducts />
+                </div>
             </MainLayout>
-        </div>
+
+            <Footer />
+        </OurShopProvider>
     );
 }
 

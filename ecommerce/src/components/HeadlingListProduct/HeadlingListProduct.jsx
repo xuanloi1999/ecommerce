@@ -17,8 +17,9 @@ function HeadlingListProduct({ data }) {
                             data={item}
                             src={item.images[0]}
                             prevSrc={item.images[1]}
-                            productPrice={item?.price}
+                            price={item?.price}
                             name={item.name}
+                            detail={item}
                         />
                     ))}
                 </div>
