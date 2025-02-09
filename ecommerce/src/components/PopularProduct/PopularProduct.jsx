@@ -15,7 +15,7 @@ function PopularProduct({ data }) {
                         prevSrc={item.images[1]}
                         price={item?.price}
                         name={item.name}
-                        detail={item}
+                        details={item}
                     />
                 ))}
             </div>

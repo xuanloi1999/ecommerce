@@ -35,7 +35,6 @@ function ListProducts() {
                                     price={item.price}
                                     details={item}
                                     isHomePage={false}
-                                    detail={item}
                                 />
                             ))}
                         </div>

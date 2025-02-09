@@ -65,7 +65,7 @@ function ProductItem({
     };
 
     const handleShowDetailProductSideBar = () => {
-        setIsOpen(true);
+        setIsSidebarOpen(true);
         setType('detail');
         setDetailProduct(details);
     };
@@ -132,10 +132,11 @@ function ProductItem({
                 className={cls(boxImg, {
                     [largImg]: !isShowGrid,
                 })}
-                onClick={handleNavigateToDetail}
             >
-                <img src={src} alt='' />
-                <img src={prevSrc} alt='' className={showImgWhenHover} />
+                <div onClick={handleNavigateToDetail}>
+                    <img src={src} alt='' />
+                    <img src={prevSrc} alt='' className={showImgWhenHover} />
+                </div>
 
                 <div className={showFncWhenHover}>
                     <div className={boxIcon}>
