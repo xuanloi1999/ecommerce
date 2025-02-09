@@ -8,4 +8,8 @@ const signIn = async (body) => {
     return await axiosClient.post('/login', body);
 };
 
-export { register, signIn };
+const getInfo = async (userId) => {
+    return await axiosClient.get('/user/info/' + userId);
+};
+
+export { register, signIn, getInfo };

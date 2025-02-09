@@ -7,29 +7,32 @@ import routers from '@/routers/routers';
 import { SidebarProvider } from '@/contexts/SidebarProvider';
 import Sidebar from '@components/Sidebar/Sidebar';
 import { ToastProvider } from '@/contexts/ToastProvider';
+import { StoreProvider } from '@/contexts/StoreProvider';
 
 function App() {
     return (
-        <ToastProvider>
-            <SidebarProvider>
-                <Sidebar />
-                <BrowserRouter>
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <Routes>
-                            {routers.map(
-                                ({ path, component: Component }, index) => (
-                                    <Route
-                                        key={index}
-                                        path={path}
-                                        element={<Component />}
-                                    />
-                                )
-                            )}
-                        </Routes>
-                    </Suspense>
-                </BrowserRouter>
-            </SidebarProvider>
-        </ToastProvider>
+        <StoreProvider>
+            <ToastProvider>
+                <SidebarProvider>
+                    <Sidebar />
+                    <BrowserRouter>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Routes>
+                                {routers.map(
+                                    ({ path, component: Component }, index) => (
+                                        <Route
+                                            key={index}
+                                            path={path}
+                                            element={<Component />}
+                                        />
+                                    )
+                                )}
+                            </Routes>
+                        </Suspense>
+                    </BrowserRouter>
+                </SidebarProvider>
+            </ToastProvider>
+        </StoreProvider>
     );
 }
 

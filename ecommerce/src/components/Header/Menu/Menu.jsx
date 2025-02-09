@@ -1,21 +1,55 @@
 import { SidebarContext } from '@/contexts/SidebarProvider';
 import styles from '../styles.module.scss';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { StoreContext } from '@/contexts/StoreProvider';
+import Cookies from 'js-cookie';
 
 function Menu({ content, href }) {
-    const { menu } = styles;
+    const { menu, subMenu } = styles;
 
     const { setIsSidebarOpen, setType } = useContext(SidebarContext);
+    const { userInfo, handleLogout } = useContext(StoreContext);
+    const [isShowSubMenu, setIsShowSubMenu] = useState(false);
+
+    console.log(userInfo);
 
     const handleClickShowLogin = () => {
-        if (content === 'Sign in') {
+        if (content === 'Sign in' && !userInfo) {
             setIsSidebarOpen(true);
             setType('login');
         }
     };
+
+    const handleContent = (content) => {
+        if (content === 'Sign in' && userInfo) {
+            return `Hello, ${userInfo?.username}`;
+        }
+        return content;
+    };
+
+    const handleHover = () => {
+        if (content === 'Sign in' && userInfo) {
+            setIsShowSubMenu(true);
+        }
+    };
+
     return (
-        <div className={menu} onClick={handleClickShowLogin}>
-            {content}
+        <div
+            className={menu}
+            onClick={handleClickShowLogin}
+            onMouseEnter={handleHover}
+        >
+            {handleContent(content)}
+
+            {isShowSubMenu && (
+                <div
+                    className={subMenu}
+                    onMouseLeave={() => setIsShowSubMenu(false)}
+                    onClick={handleLogout}
+                >
+                    LOG OUT
+                </div>
+            )}
         </div>
     );
 }
