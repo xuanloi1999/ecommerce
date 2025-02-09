@@ -58,8 +58,8 @@ function Login() {
                 await signIn({ username, password })
                     .then((res) => {
                         const { id, token, refreshToken, message } = res.data;
-                        setUserId(id);
                         toast.success(message);
+                        setUserId(id);
                         Cookies.set('token', token);
                         Cookies.set('refreshToken', refreshToken);
                         Cookies.set('userId', id);

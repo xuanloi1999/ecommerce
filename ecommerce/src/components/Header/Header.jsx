@@ -8,6 +8,9 @@ import useScrollHandling from '@/hooks/useScrollHandling';
 import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { SidebarContext } from '@/contexts/SidebarProvider';
+import { TfiReload } from 'react-icons/tfi';
+import { BsHeart } from 'react-icons/bs';
+import { PiShoppingCart } from 'react-icons/pi';
 
 function Header() {
     const {
@@ -18,12 +21,16 @@ function Header() {
         container,
         fixedHeader,
         topHeader,
+        boxCart,
+        quantity,
     } = styles;
 
     const [fixed, setFixed] = useState(false);
     const { scrollPosition } = useScrollHandling();
-    const { isSidebarOpen, setIsSidebarOpen, type, setType } =
+    const { isSidebarOpen, setIsSidebarOpen, type, setType, productsCart } =
         useContext(SidebarContext);
+
+    console.log(productsCart.length);
 
     const handleOpenSidebar = (type) => {
         setIsSidebarOpen(true);
@@ -65,13 +72,30 @@ function Header() {
                         ))}
                     </div>
                     <div className={containerBoxIcon}>
-                        {dataBoxIcon.slice(3).map((icon) => (
-                            <BoxIcon
-                                type={icon.type}
-                                href={icon.href}
-                                setType={handleOpenSidebar}
+                        <TfiReload
+                            style={{
+                                fontSize: '20px',
+                            }}
+                            onClick={() => handleOpenSidebar('compare')}
+                        />
+                        <BsHeart
+                            style={{
+                                fontSize: '20px',
+                            }}
+                            onClick={() => handleOpenSidebar('wishlist')}
+                        />
+                        <div className={boxCart}>
+                            <PiShoppingCart
+                                style={{
+                                    fontSize: '25px',
+                                }}
+                                onClick={() => handleOpenSidebar('cart')}
                             />
-                        ))}
+
+                            <div className={quantity}>
+                                {productsCart.length}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

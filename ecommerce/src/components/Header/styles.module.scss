@@ -84,3 +84,19 @@
     transform: scale(1);
     opacity: 1;
 }
+
+.boxCart {
+    position: relative;
+    .quantity {
+        position: absolute;
+        font-size: 10px;
+        top: -5px;
+        right: -10px;
+        background-color: $primary_color;
+        color: #fff;
+        @include radius_common(50%);
+        width: 15px;
+        height: 15px;
+        @include flex_box_custom(center, center);
+    }
+}

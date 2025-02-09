@@ -11,6 +11,7 @@ import { TfiReload } from 'react-icons/tfi';
 import styles from './styles.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { SidebarContext } from '@/contexts/SidebarProvider';
+import { addProductToCart } from '@apis/CartService';
 
 function ProductItem({
     src,
@@ -26,8 +27,12 @@ function ProductItem({
     const ourShopStore = useContext(OurShopContext);
     const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid);
     const userId = Cookies.get('userId');
-    const { setIsOpen, setType, handleGetListProductsCart, setDetailProduct } =
-        useContext(SidebarContext);
+    const {
+        setIsSidebarOpen,
+        setType,
+        handleGetProductsCart,
+        setDetailProduct,
+    } = useContext(SidebarContext);
     const { toast } = useContext(ToastContext);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
@@ -69,6 +74,39 @@ function ProductItem({
         const path = `/product/${details._id}`;
 
         navigate(path);
+    };
+
+    const handleAddToCart = () => {
+        setIsLoading(true);
+        if (!userId) {
+            setIsSidebarOpen(true);
+            setType('login');
+            toast.warning('Please login before add to cart!');
+        }
+
+        if (!sizeChoose) {
+            toast.warning('Please choose size!');
+            return;
+        }
+
+        const data = {
+            userId,
+            productId: details._id,
+            quantity: 1,
+            size: sizeChoose,
+        };
+        addProductToCart(data)
+            .then((res) => {
+                setIsSidebarOpen(true);
+                setType('cart');
+                toast.success('Add Product to cart successfully!');
+                handleGetProductsCart(userId, 'cart');
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                toast.error('Add Product to cart failed!');
+                setIsLoading(false);
+            });
     };
 
     useEffect(() => {
@@ -207,6 +245,7 @@ function ProductItem({
                                     'SELECT OPTIONS'
                                 )
                             }
+                            onClick={handleAddToCart}
                         />
                     </div>
                 )}
