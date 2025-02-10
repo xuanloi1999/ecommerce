@@ -11,6 +11,7 @@ import { SidebarContext } from '@/contexts/SidebarProvider';
 import { TfiReload } from 'react-icons/tfi';
 import { BsHeart } from 'react-icons/bs';
 import { PiShoppingCart } from 'react-icons/pi';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
     const {
@@ -30,7 +31,7 @@ function Header() {
     const { isSidebarOpen, setIsSidebarOpen, type, setType, productsCart } =
         useContext(SidebarContext);
 
-    console.log(productsCart.length);
+    const navigate = useNavigate();
 
     const handleOpenSidebar = (type) => {
         setIsSidebarOpen(true);
@@ -55,7 +56,7 @@ function Header() {
                         ))}
                     </div>
                 </div>
-                <div>
+                <div onClick={() => navigate('/')}>
                     <img
                         src={Logo}
                         alt='Logo'

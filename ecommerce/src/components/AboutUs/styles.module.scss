@@ -1,0 +1,5 @@
+@import '@styles/mixin.module.scss';
+
+.productContainer {
+    @include flex_box_custom(center, center, 0px);
+}

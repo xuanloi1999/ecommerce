@@ -30,7 +30,10 @@ function HomePage() {
             <Header />
             <Banner />
             <Info />
-            <AdvanceHeadling />
+            <AdvanceHeadling
+                description="don't miss super offers"
+                head='Our best products'
+            />
             <HeadlingListProduct data={products.slice(0, 2)} />
             <PopularProduct data={products.slice(2)} />
             <SaleHomePage />
